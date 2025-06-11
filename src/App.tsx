@@ -77,36 +77,38 @@ export const App: React.FC = () => {
             />
           </div>
 
-          <div className="dropdown-menu" role="menu">
-            <div className="dropdown-content" data-cy="suggestions-list">
-              {rawInputValue && filteredPeople.length === 0 && (
-                <div
-                  className="dropdown-item"
-                  role="alert"
-                  data-cy="no-suggestions-message"
-                >
-                  <p className="has-text-danger">No matching suggestions</p>
-                </div>
-              )}
-
-              {filteredPeople.map((person, index) => (
-                <div
-                  key={index}
-                  className="dropdown-item"
-                  data-cy="suggestion-item"
-                  onMouseDown={() => onSuggestionClick(person)}
-                >
-                  <p
-                    className={
-                      person.sex === 'm' ? 'has-text-link' : 'has-text-danger'
-                    }
+          {showDropdown && (
+            <div className="dropdown-menu" role="menu">
+              <div className="dropdown-content" data-cy="suggestions-list">
+                {rawInputValue && filteredPeople.length === 0 && (
+                  <div
+                    className="dropdown-item"
+                    role="alert"
+                    data-cy="no-suggestions-message"
                   >
-                    {person.name}
-                  </p>
-                </div>
-              ))}
+                    <p className="has-text-danger">No matching suggestions</p>
+                  </div>
+                )}
+
+                {filteredPeople.map((person, index) => (
+                  <div
+                    key={index}
+                    className="dropdown-item"
+                    data-cy="suggestion-item"
+                    onMouseDown={() => onSuggestionClick(person)}
+                  >
+                    <p
+                      className={
+                        person.sex === 'm' ? 'has-text-link' : 'has-text-danger'
+                      }
+                    >
+                      {person.name}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </main>
     </div>
