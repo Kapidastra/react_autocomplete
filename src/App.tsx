@@ -65,7 +65,6 @@ export const App: React.FC = () => {
               onChange={e => setRawInputValue(e.target.value)}
               onFocus={() => setShowDropdown(true)}
               onBlur={e => {
-                // Якщо фокус пішов на елемент всередині dropdown-menu — не ховаємо список
                 if (
                   e.relatedTarget &&
                   (e.relatedTarget as HTMLElement).closest('.dropdown-menu')
